@@ -1,0 +1,40 @@
+// ==========
+// Base
+// ==========
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: $arial; 
+    position: relative;
+    padding-top: 2rem;
+    background-color: $darker-grey;
+    color: white;
+}
+
+main {
+  @include z-index(generic);
+}
+
+// Elements
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+
+    &:hover {
+        color: #000;
+        text-decoration: none;
+    }
+}
+
+textarea {
+    resize: none;
+}
+
+ul, ol {
+    padding-left: 20px;
+}

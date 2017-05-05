@@ -1,0 +1,21 @@
+// =================
+// Carousel styling
+// =================
+.c-carousel {
+	margin-bottom: 8rem;
+	margin-top: 2rem;
+}
+
+.c-carousel--slide {
+	background-color: $dark-grey;
+	color: $grey;
+	width: 100%;
+	min-height: 300px;
+	text-align: center;
+	position: relative;
+	text-transform: uppercase;
+
+	> h3 {
+		@include absolute-center;
+	}
+}

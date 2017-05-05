@@ -1,0 +1,43 @@
+// ============
+// Home styling
+// ============
+.c-project-title {
+	text-transform: uppercase;
+	float: right;
+	font-size: 1.25rem;
+	font-weight: bold;
+	line-height: 34px;
+}
+
+.c-logo {
+	color: $grey;
+	background-color: $dark-grey;
+	display: inline-block;
+	padding: 0.625rem 1rem;
+}
+
+.c-page--title {
+	font-size: 4.5rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1.25rem;
+}
+
+.c-slogan {
+	color: $light-grey;
+	text-transform: uppercase;
+	font-size: 0.875rem;
+	font-weight: bold;
+}
+
+.c-page-summary {
+	@include mappy-bp(large) {
+		width: 80%;
+	}
+
+	color: $light-grey;
+	font-size: 1.5rem;
+	line-height: 1.4;
+	margin: 1rem auto 3rem;
+}
+

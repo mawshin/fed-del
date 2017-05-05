@@ -1,0 +1,94 @@
+// ==========
+// Generic
+// ==========
+
+.c-btn-default {
+	color: white;
+	font-weight: normal;
+	padding: 1rem 1.875rem;
+	text-transform: uppercase;
+	border: 1px solid $light-grey;
+	text-decoration: none;
+
+	transition: background-color 0.5s ease;
+
+	&:hover {
+		background-color: white;
+		color: $darker-grey;
+		text-decoration: none;
+	}
+	&.focus {
+		background-color: white;
+		color: $darker-grey;
+	}
+	&:focus {
+		background-color: white;
+		color: $darker-grey;
+	}
+}
+
+.no-gutter {
+	> [class*="col-"] {
+		padding-right: 0;
+		padding-left: 0;
+	}
+}
+
+.modal-content {
+	padding-bottom: 3rem;
+}
+
+.c-modal--close {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    border: 0;
+    font-size: 2.25rem;
+    color: black;
+    width: 44px;
+    height: 44px;
+    float: right;
+    position: relative;
+    line-height: 34px;
+    background-color: transparent; 
+
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+    }
+
+    &:after {
+        content: "⨯";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 5px;
+        bottom: 0;
+        margin: auto;
+    }
+}
+
+.c-modal--header {
+	height: 40px;
+}
+
+.c-modal--content {
+	color: $grey;
+	text-align: center;
+	font-size: 1.25rem;
+}
+
+.c-modal--title {
+	color: black;
+	text-transform: uppercase;
+	text-align: center;
+}
