@@ -17,7 +17,11 @@
 }
 
 .c-page--title {
-	font-size: 4.5rem;
+	@include mappy-bp(large) {
+		font-size: 4.5rem;
+	}
+
+	font-size: 3rem;
 	font-weight: bold;
 	text-transform: uppercase;
 	letter-spacing: 1.25rem;
@@ -33,10 +37,11 @@
 .c-page-summary {
 	@include mappy-bp(large) {
 		width: 80%;
+		font-size: 1.5rem;
 	}
 
 	color: $light-grey;
-	font-size: 1.5rem;
+	font-size: 1.25rem;
 	line-height: 1.4;
 	margin: 1rem auto 3rem;
 }

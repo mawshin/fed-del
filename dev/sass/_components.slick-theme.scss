@@ -112,6 +112,7 @@ $slick-opacity-not-active: 1 !default;
         left: auto;
         right: 5px;
     }
+    z-index: 100;
     &:before {
         content: $slick-prev-character;
         [dir="rtl"] & {
