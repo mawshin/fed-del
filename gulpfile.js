@@ -20,16 +20,11 @@ var cache = require('gulp-cache');
  * Launch the Server
  */
 gulp.task('browser-sync', ['sync'], function () {
-	browserSync.init(null, {
+	browserSync.init({
 		// Change as required
-		proxy: "192.168.1.6/deloitte/public/",
-		socket: {
-			// For local development only use the default BrowserSync local URL.
-			// domain: 'localhost:3000',
-			// For external development (e.g on a mobile or tablet) use an external URL.
-			// You will need to update this to whatever BS tells you is the external URL when you run Gulp.
-			domain: 'localhost:3000'
-		}
+		server: {
+      baseDir: "./public/"
+    }
 	});
 });
 
