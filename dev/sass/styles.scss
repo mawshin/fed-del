@@ -4,7 +4,10 @@
  * Rationale for class name-spacing can be found at
  * http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/
  */
-@import "bootstrap";
+@import 'normalize/variables';
+@import 'normalize/vertical-rhythm';
+@import 'normalize/normalize-mixin';
+
 @import "fontello";
 
 @import "settings";
@@ -21,18 +24,8 @@
 // ==========
 // Components
 // ==========
-// @import "components.navbar";
-// @import "components.sticky-right-menu";
-@import "components.slick";
-@import "components.slick-theme";
 @import "components.home";
 @import "components.carousel";
-// @import "components.work";
-// @import "components.join";
-// @import "components.contact";
-// @import "components.footer";
-// @import "components.shame";
-// @import "components.ie-specific";
 
 // ==========
 // Trumps

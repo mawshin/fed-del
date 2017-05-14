@@ -18,8 +18,17 @@ main {
 }
 
 // Elements
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
 p {
     margin-bottom: 1rem;
+    margin-top: 0.5rem;
 }
 
 a {
@@ -31,10 +40,29 @@ a {
     }
 }
 
+hr {
+    @include mappy-bp(large) {
+        margin: 5rem 0;
+    }
+
+    border: 0;
+    height: 1px;
+    background: $light-grey;
+    margin: 2.5rem 0;
+}
+
 textarea {
     resize: none;
 }
 
 ul, ol {
     padding-left: 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.clearfix {
+    @include cf;
 }

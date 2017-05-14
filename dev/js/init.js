@@ -12,57 +12,20 @@
 		
 		
 		$(function () {
-			var isMobile = {
-				Android: function() {
-					return navigator.userAgent.match(/Android/i);
-				},
-				BlackBerry: function() {
-					return navigator.userAgent.match(/BlackBerry/i);
-				},
-				iOS: function() {
-					return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-				},
-				Opera: function() {
-					return navigator.userAgent.match(/Opera Mini/i);
-				},
-				Windows: function() {
-					return navigator.userAgent.match(/IEMobile/i);
-				},
-				any: function() {
-					return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-				}
-			};
-			
-			if (isMobile.any() && $(".carousel").length > 0) {
-			   // $(".carousel").swiperight(function() {  
-				  // $(this).carousel('prev');  
-			   // });  
-			   // $(".carousel").swipeleft(function() {  
-				  // $(this).carousel('next');  
-			   // });
-			}
+			var modal = $('.modal');
 
-			if($('.c-carousel').length > 0) {
-				$('.c-carousel').slick({
-					dots: true,
-					infinite: true,
-					speed: 300,
-					slidesToShow: 1
-				});
-			}
-			
-			if($('.c-carousel--slide').length > 0) {
-				var slider = $('.c-carousel--slide');
-				var modal = $('#captionModal');
-				let caption = "";
-
-				modal.on('hide.bs.modal', function (e) {
-					$('.c-slider--caption').text("");
+			if($('.jsCarouselSlide').length > 0) {
+				$('.modal-backdrop').click(function(e) {
+					$modal.hide();
 				});
 
-				$('.c-carousel--slide').click(function(e) {
-					$('#captionModal').modal();
-					caption = $(this).attr('aria-describedby');
+				$('.c-modal--close').click(function(e) {
+					modal.hide();
+				});
+
+				$('.jsCarouselSlide').click(function(e) {
+					$('#captionModal').show();
+					caption = $(this).find('img').attr('aria-describedby');
 					$('.c-slider--caption').text(caption);
 				});
 

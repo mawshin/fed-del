@@ -5,6 +5,10 @@
     margin: 0;
 }
 
+.u-mts {
+    margin: 1rem;
+}
+
 .u-no-bullets {
     list-style: none;
 }
@@ -30,6 +34,16 @@
     text-transform: lowercase;
 }
 
+.u-uppercase {
+    text-transform: uppercase;
+}
+
 .u-san-serif {
     font-family: "Baskerville", serif;
+}
+
+.u-flexbox {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

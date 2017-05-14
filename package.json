@@ -30,6 +30,7 @@
     "postcss-reporter": "^3.0.0",
     "postcss-scss": "^0.4.1",
     "stylelint": "^7.10.1",
+    "susy": "^2.2.12",
     "typi": "^3.1.0"
   }
 }

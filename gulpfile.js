@@ -20,12 +20,12 @@ var cache = require('gulp-cache');
  * Launch the Server
  */
 gulp.task('browser-sync', ['sync'], function () {
-	browserSync.init({
-		// Change as required
-		server: {
+  browserSync.init({
+    // Change as required
+    server: {
       baseDir: "./public/"
     }
-	});
+  });
 });
 
 /**
@@ -52,16 +52,12 @@ gulp.task("scss-lint", function() {
       "media-feature-colon-space-before": "never",
       "media-feature-name-no-vendor-prefix": true,
       "max-empty-lines": 5,
-      // "number-leading-zero": "never",
       "number-no-trailing-zeros": true,
       "property-no-vendor-prefix": true,
-      // "declaration-block-no-duplicate-properties": true,
       "block-opening-brace-newline-after": "always",
       "block-closing-brace-newline-before": "always",
       "declaration-block-trailing-semicolon": "always",
       "selector-list-comma-space-before": "never",
-      // "selector-list-comma-newline-after": "always",
-      // "selector-no-id": true,
       "string-quotes": "double",
       "value-no-vendor-prefix": true
     }
@@ -79,7 +75,7 @@ gulp.task("scss-lint", function() {
       ['dev/sass/*.scss', 'dev/sass/**/*.scss',
       // Ignore linting vendor assets
       // Useful if you have bower components
-      '!dev/sass/_settings.scss', '!dev/sass/_components.ie-specific.scss', '!dev/sass/_components.shame.scss', '!dev/sass/_tools.scss', '!dev/sass/lib/*.scss', '!dev/sass/bootstrap/*.scss', '!dev/sass/bootstrap/**/*.scss']
+      '!dev/sass/_settings.scss', '!dev/sass/_components.shame.scss', '!dev/sass/_tools.scss', '!dev/sass/lib/*.scss']
     )
     .pipe(postcss(processors, {syntax: syntax_scss}));
 });
@@ -88,47 +84,47 @@ gulp.task("scss-lint", function() {
  * Compile files from scss
  */
 gulp.task('sass', function () {
-	return gulp.src(['dev/sass/styles.scss'])
-		.pipe(sourcemaps.init())
-		.pipe(sass({
-			includePaths: ['scss'],
-			onError: browserSync.notify
-		}))
-		.pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {cascade: true}))
-		.pipe(sourcemaps.write())
-		.pipe(gulp.dest('public/css/'));
+  return gulp.src(['dev/sass/styles.scss'])
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+      includePaths: ['scss', 'node_modules/susy/sass'],
+      onError: browserSync.notify
+    }))
+    .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {cascade: true}))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('public/css/'));
 });
 
 gulp.task('sass-prod', function () {
-	return gulp.src(['dev/sass/styles.scss'])
-		.pipe(sass({
-			includePaths: ['scss']
-		}))
-		.pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {cascade: true}))
-		.pipe(gulp.dest('public/css/'));
+  return gulp.src(['dev/sass/styles.scss'])
+    .pipe(sass({
+      includePaths: ['scss']
+    }))
+    .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {cascade: true}))
+    .pipe(gulp.dest('public/css/'));
 });
 
 /**
  * Minify custom js scripts
  */
 gulp.task('scripts', function () {
-	return gulp.src(['dev/js/lib/jquery-1.10.2.min.js', 'dev/js/lib/modernizr-custom.min.js', 'dev/js/lib/bootstrap.min.js', 'dev/js/lib/rem.js', 'dev/js/lib/slick.min.js', 'dev/js/init.js'])
-		.pipe(concat('app.js'))
-		.pipe(gulp.dest('public/js/'));
+  return gulp.src(['dev/js/lib/rem.js', 'dev/js/init.js'])
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('public/js/'));
 });
 
 gulp.task('scripts-prod', function () {
-	return gulp.src('dev/js/app.min.js')
-		.pipe(uglify())
-		.pipe(gulp.dest('public/js/app.min.js'));
+  return gulp.src('dev/js/app.min.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('public/js/app.min.js'));
 });
 
 /**
  * Reload page when views change
  */
 gulp.task('views', function () {
-	browserSync.reload();
-	console.log('Refresh');
+  browserSync.reload();
+  console.log('Refresh');
 });
 
 gulp.task('copy-files', function() {  
@@ -137,14 +133,14 @@ gulp.task('copy-files', function() {
 });
 
 gulp.task('sync', function() {
-	gulp.src(['dev/**/*', '!dev/{sass,sass/**}', '!dev/js/{init.js,lib,lib/**}'])
-		.pipe(newer('public/'))
-		.pipe(gulp.dest('public/'))
-		.pipe(browserSync.reload({stream: true}));
+  gulp.src(['dev/**/*', '!dev/{sass,sass/**}', '!dev/js/{init.js,lib,lib/**}'])
+    .pipe(newer('public/'))
+    .pipe(gulp.dest('public/'))
+    .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('cache:clear', function (callback) {
-	return cache.clearAll(callback)
+  return cache.clearAll(callback)
 })
 
 /**
@@ -152,22 +148,21 @@ gulp.task('cache:clear', function (callback) {
  * Watch views folder for changes and reload BrowserSync
  */
 gulp.task('watch', function () {
-	gulp.watch(['dev/sass/*.scss', 'dev/sass/**/*.scss'], ['scss-lint', 'sass']);
-	gulp.watch(['dev/js/**'], ['scripts']);
+  gulp.watch(['dev/sass/*.scss', 'dev/sass/**/*.scss'], ['scss-lint', 'sass']);
+  gulp.watch(['dev/js/**'], ['scripts']);
   gulp.watch(['dev/images/*', 'dev/images/**/*'], ['sync']);
-	gulp.watch(['dev/partials/*'], ['sync']);
 
-	var watcher = gulp.watch(['dev/**/*', '!dev/{sass,sass/**}', '!dev/js/{init.js,lib,lib/**}'], ['sync']);
-	watcher.on('change', function(ev) {
+  var watcher = gulp.watch(['dev/**/*', '!dev/{sass,sass/**}', '!dev/js/{init.js,lib,lib/**}'], ['sync']);
+  watcher.on('change', function(ev) {
          if(ev.type === 'deleted') {
-         	/**
-         	 * Sync up deleted files between 2 folder on harddisk
-         	 * refer to article "https://fettblog.eu/gulp-recipes-part-2/#sync-directories-on-your-harddisk"
-         	 */
-         	
-         	//console.log('file deleted');
-         	//console.log(path.relative('./', ev.path).replace('app\\assets\\','public\\'));
- 			    del(path.relative('./', ev.path).replace('dev\\','public\\'));
+          /**
+           * Sync up deleted files between 2 folder on harddisk
+           * refer to article "https://fettblog.eu/gulp-recipes-part-2/#sync-directories-on-your-harddisk"
+           */
+          
+          //console.log('file deleted');
+          //console.log(path.relative('./', ev.path).replace('app\\assets\\','public\\'));
+          del(path.relative('./', ev.path).replace('dev\\','public\\'));
          }
     });
 });
@@ -177,4 +172,3 @@ gulp.task('watch', function () {
  * compile the scripts, launch BrowserSync & watch files.
  */
 gulp.task('default', ['browser-sync', 'watch']);
-gulp.task('firstcopy', ['copy-files']);
